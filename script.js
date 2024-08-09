@@ -1,4 +1,5 @@
-document.getElementById('candle').addEventListener('click', function() {
+// Function to handle candle clicks
+function handleCandleClick() {
     var surprise = document.getElementById('surprise');
     var confetti = document.getElementById('confetti');
     var poem = document.getElementById('poem');
@@ -59,4 +60,10 @@ document.getElementById('candle').addEventListener('click', function() {
         extraParagraphs.classList.remove('hidden');
         revealExtraLine();
     }, 14000);
+}
+
+// Attach click event listeners to all candles
+var candles = document.querySelectorAll('.candle');
+candles.forEach(candle => {
+    candle.addEventListener('click', handleCandleClick);
 });
