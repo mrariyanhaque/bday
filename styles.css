@@ -19,9 +19,18 @@ body {
 }
 
 h1 {
-    color: #ff69b4;
+    background: linear-gradient(45deg, #ff69b4, #ff1493, #ff00ff, #8a2be2, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 3em;
     margin-bottom: 20px;
+    animation: rainbow 5s infinite;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 #cake-container {
@@ -34,16 +43,34 @@ h1 {
     height: auto;
 }
 
-#candle {
+.candle {
     position: absolute;
-    top: 20px;
-    left: 130px;
     width: 30px;
     height: 80px;
     background: #ffeb3b;
     border-radius: 15px;
     cursor: pointer;
     animation: glow 1s infinite alternate;
+}
+
+.candle:nth-child(2) {
+    top: 20px;
+    left: 100px;
+}
+
+.candle:nth-child(3) {
+    top: 20px;
+    left: 150px;
+}
+
+.candle:nth-child(4) {
+    top: 20px;
+    left: 200px;
+}
+
+.candle:nth-child(5) {
+    top: 20px;
+    left: 250px;
 }
 
 @keyframes glow {
@@ -58,7 +85,8 @@ h1 {
 #instructions {
     margin-top: 20px;
     font-size: 1.2em;
-    color: #ffeb3b;
+    color: #ff69b4;
+    text-shadow: 2px 2px 5px #000;
 }
 
 #surprise {
@@ -79,7 +107,8 @@ h1 {
 #birthday-clock {
     margin: 20px auto;
     font-size: 2em;
-    color: #ff1493;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
 }
 
 #poem, #extra-paragraphs {
@@ -90,10 +119,20 @@ h1 {
     color: #ff69b4;
 }
 
-.hidden {
-    display: none;
+#poem p, #extra-paragraphs p {
+    margin: 10px 0;
+    background: linear-gradient(45deg, #ff00ff, #ff69b4, #00ffff, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text 5s infinite;
 }
 
-p {
-    margin: 10px 0;
+@keyframes rainbow-text {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.hidden {
+    display: none;
 }
