@@ -24,37 +24,56 @@ h1 {
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #ff69b4;
-    border: none;
-    color: white;
-    padding: 15px 25px;
-    font-size: 1.2em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 20px 0;
-}
-
-button:hover {
-    background-color: #ff1493;
-}
-
-#heart-tree {
+#cake-container {
     margin: 20px auto;
-    width: 300px;
-    height: 300px;
-    background: url('heart_tree.png') no-repeat center center;
-    background-size: contain;
-    animation: grow 5s ease-in-out forwards;
+    position: relative;
 }
 
-@keyframes grow {
+#cake img {
+    width: 300px;
+    height: auto;
+}
+
+#candle {
+    position: absolute;
+    top: 20px;
+    left: 130px;
+    width: 30px;
+    height: 80px;
+    background: #ffeb3b;
+    border-radius: 15px;
+    cursor: pointer;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
     from {
-        transform: scale(0);
+        box-shadow: 0 0 10px #ffeb3b;
     }
     to {
-        transform: scale(1);
+        box-shadow: 0 0 20px #ffeb3b;
     }
+}
+
+#instructions {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffeb3b;
+}
+
+#surprise {
+    margin: 20px auto;
+}
+
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('confetti.png') no-repeat center center;
+    background-size: cover;
+    display: none;
 }
 
 #birthday-clock {
@@ -63,7 +82,7 @@ button:hover {
     color: #ff1493;
 }
 
-#poem {
+#poem, #extra-paragraphs {
     margin: 20px auto;
     max-width: 600px;
     font-size: 1.2em;
@@ -73,4 +92,8 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+p {
+    margin: 10px 0;
 }
