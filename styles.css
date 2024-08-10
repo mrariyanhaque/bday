@@ -50,6 +50,8 @@ h1 {
     background: #ffeb3b;
     border-radius: 15px;
     cursor: pointer;
+    opacity: 0; /* Hide candles visually */
+    pointer-events: auto; /* Ensure the candles are still interactive */
     animation: glow 1s infinite alternate;
 }
 
