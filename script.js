@@ -1,4 +1,3 @@
-// Function to handle candle clicks
 function handleCandleClick() {
     var surprise = document.getElementById('surprise');
     var confetti = document.getElementById('confetti');
@@ -17,53 +16,43 @@ function handleCandleClick() {
     // Show the surprise content
     surprise.classList.remove('hidden');
 
-    // Create the clock
-    var birthday = new Date('2010-11-10T00:00:00');
+    // Create the clock to display age
+    var birthday = new Date('2010-11-10T00:00:00'); // Mohua's birth date
     function updateClock() {
         var now = new Date();
-        var diff = new Date(now - birthday);
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        clock.innerHTML = `⏳ Days: ${days} Hours: ${hours} Minutes: ${minutes} Seconds: ${seconds}`;
+        var ageInMs = now - birthday;
+
+        var years = Math.floor(ageInMs / (1000 * 60 * 60 * 24 * 365.25)); // Include leap years
+        var days = Math.floor((ageInMs % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((ageInMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((ageInMs % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((ageInMs % (1000 * 60)) / 1000);
+
+        clock.innerHTML = `⏳ Age: ${years} Years, ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Reveal the poem
+    // Reveal the poem line-by-line
     var poemLines = poem.getElementsByTagName('p');
     let i = 0;
     function revealLine() {
         if (i < poemLines.length) {
             poemLines[i].style.display = 'block';
             i++;
-            setTimeout(revealLine, 2000);
+            setTimeout(revealLine, 2000);  // Reveal each line every 2 seconds
+        } else {
+            // Show all extra paragraphs at once after the poem is fully revealed
+            extraParagraphs.classList.remove('hidden');
         }
     }
     setTimeout(() => {
         poem.classList.remove('hidden');
         revealLine();
     }, 2000);
-
-    // Reveal additional paragraphs
-    var extraLines = extraParagraphs.getElementsByTagName('p');
-    let j = 0;
-    function revealExtraLine() {
-        if (j < extraLines.length) {
-            extraLines[j].style.display = 'block';
-            j++;
-            setTimeout(revealExtraLine, 2000);
-        }
-    }
-    setTimeout(() => {
-        extraParagraphs.classList.remove('hidden');
-        revealExtraLine();
-    }, 14000);
 }
 
-// Attach click event listeners to all candles
-var candles = document.querySelectorAll('.candle');
-candles.forEach(candle => {
+// Attach the click handler to all candles
+document.querySelectorAll('.candle').forEach(candle => {
     candle.addEventListener('click', handleCandleClick);
 });
